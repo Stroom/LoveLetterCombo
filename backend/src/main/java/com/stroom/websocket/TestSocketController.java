@@ -16,7 +16,6 @@ public class TestSocketController {
 	@MessageMapping("/hello")
 	@SendTo("/topic/greetings")
 	public TestMessageResponse testMessage(TestMessageRequest message) throws Exception {
-		System.out.println("Message: " + message.getText());
 		log.info("Message: " + message.getText());
 		return TestMessageResponse.of("Reply to: " + message.getText());
 	}
