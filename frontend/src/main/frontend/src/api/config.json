@@ -1,0 +1,15 @@
+{
+    "host": "localhost",
+    "port": 8080,
+    "https": true,
+
+    "user": "username",
+    "pass": "changeme",
+    "subscribe": ["/topic/greetings"],
+    "publish": ["/topic/test"],
+
+    "heartbeat_in": 0,
+    "heartbeat_out": 20000,
+
+    "debug": true
+}

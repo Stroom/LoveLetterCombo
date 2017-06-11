@@ -1,0 +1,48 @@
+<!--head>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head -->
+
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" [hidden]="isConnected === true" (click)="connect()">Connect</button>
+                    <button id="disconnect" class="btn btn-default" [hidden]="isConnected === false" (click)="disconnect()">Disconnect</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6" [hidden]="isConnected === false">
+            <div class="form-group">
+                <label for="name">Write some text here</label>
+                <input type="text" id="text" class="form-control" placeholder="Text" [(ngModel)]="text">
+            </div>
+            <button class="btn btn-default" (click)="send()">Send</button>
+        </div>
+    </div>
+    <div class="row" [hidden]="isConnected === false">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Greetings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let message of messages">
+                        <td>{{message.text}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
