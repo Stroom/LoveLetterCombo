@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Stroom on 10/06/2017.
  */
 @RestController
-@RequestMapping("test")
+@RequestMapping("/api/test")
 @CrossOrigin
 public class TestRestController {
 	

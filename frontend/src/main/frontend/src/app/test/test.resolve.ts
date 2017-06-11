@@ -28,7 +28,7 @@ export class TestResolve implements Resolve<Promise<string> | boolean> {
 
     getTest(): Promise<string> {
         return this.http
-            .get('http://localhost:8080/test').toPromise()
+            .get('http://localhost:8080/api/test').toPromise()
             .then(response => response.text())
             .catch(this.handleError);
     }

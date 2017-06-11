@@ -35,6 +35,7 @@ const routes: Routes = [
     path: 'websocket',
     component: SockComponent
   }
+  //TODO add default error page.
 ];
 
 @NgModule({
