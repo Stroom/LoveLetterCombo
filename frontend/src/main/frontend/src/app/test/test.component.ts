@@ -11,13 +11,17 @@ export class TestComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.route.data
     .subscribe((data: {text: string}) => {
-        this.text = data.text;
+      this.text = data.text;
+    },
+    err => {
+      console.log("err");
+      this.router.navigateByUrl('home');
     });
   }
 }

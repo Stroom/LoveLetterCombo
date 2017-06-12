@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class TestSocketController {
 	
-	static Logger log = Logger.getLogger(TestSocketController.class.getName());
+	private final Logger log = Logger.getLogger(TestSocketController.class.getName());
 	
 	@MessageMapping("/hello")
 	@SendTo("/topic/greetings")

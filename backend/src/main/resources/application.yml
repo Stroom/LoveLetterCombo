@@ -1,0 +1,9 @@
+
+jwt:
+  header: Authorization
+  secret: loveletterSecret
+  expiration: 604800
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
