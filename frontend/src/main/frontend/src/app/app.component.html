@@ -3,15 +3,16 @@
       <ul class="nav navbar-nav">
         <li><a routerLink="/">Home</a>
         
-        <li><a routerLink="/test">Test</a>
-        <li><a routerLink="/websocket">Socket</a>
-        
-        <li><a routerLink="/login">Log in</a>
-        <li><a routerLink="/register">Register</a>
+        <li *ngIf="roleIs(['ROLE_USER', 'ROLE_ADMIN'])"><a routerLink="/test">Test</a>
+        <li *ngIf="roleIs(['ROLE_USER', 'ROLE_ADMIN'])"><a routerLink="/websocket">Socket</a>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!isLoggedIn()"><a routerLink="/login">Log in</a>
+        <li *ngIf="!isLoggedIn()"><a routerLink="/register">Register</a>
+        <li *ngIf="isLoggedIn()"><a href="javascript:void(0)" (click)="logout()">Log out</a>
       </ul>
   </nav>
   <div class="container">
     <router-outlet></router-outlet>
   </div>
 </div>
-

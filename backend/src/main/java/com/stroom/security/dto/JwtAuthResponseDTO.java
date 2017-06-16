@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Stroom on 12/06/2017.
  */
 @Data
-public class JwtAuthenticationResponse implements Serializable {
+public class JwtAuthResponseDTO implements Serializable {
 	
 	@JsonIgnore
 	private final long serialVersionUID = 1250166508152483573L;
@@ -20,7 +20,7 @@ public class JwtAuthenticationResponse implements Serializable {
 	
 	private final List<String> authorities;
 	
-	public JwtAuthenticationResponse(String token, List<String> authorities) {
+	public JwtAuthResponseDTO(String token, List<String> authorities) {
 		this.token = token;
 		this.authorities = authorities;
 	}

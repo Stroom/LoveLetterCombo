@@ -33,11 +33,18 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 	@Value("${jwt.header}")
 	private String tokenHeader;
 	
+	@Value("${jwt.socket}")
+	private String tokenSocketHeader;
+	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request,
 									HttpServletResponse response,
 									FilterChain chain) throws ServletException, IOException {
 		String authToken = request.getHeader(this.tokenHeader);
+		
+		if(authToken == null) {
+			authToken = request.getParameter("jwt");
+		}
 		
 		if(authToken != null && authToken.startsWith("Bearer ")) {
 			authToken = authToken.substring(7);

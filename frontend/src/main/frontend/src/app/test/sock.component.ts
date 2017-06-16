@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { TestMessage } from "app/test/definitions";
+import { TestMessage } from "app/definitions";
+import { AuthenticationService } from "app/authentication/authentication.service";
 
 
 var SockJS = require('sockjs-client');
@@ -18,6 +19,7 @@ export class SockComponent {
   messages: Array<TestMessage> = new Array<TestMessage>();
 
   constructor(
+    private authentication: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -29,9 +31,11 @@ export class SockComponent {
 
   connect() {
     var that = this;
-    var socket = new SockJS('http://localhost:8080/ws');
+    this.messages = new Array<TestMessage>();
+    var socket = new SockJS('http://localhost:8080/ws?jwt=' + this.authentication.getToken());
     this.stompClient = Stomp.over(socket);
     this.stompClient.debug = null;
+    
     this.stompClient.connect({}, function (frame) {
       that.isConnected = true;
       that.stompClient.subscribe('/topic/greetings', function(greeting) {
@@ -46,4 +50,5 @@ export class SockComponent {
     this.stompClient.disconnect();
     this.isConnected = false;
   }
+
 }

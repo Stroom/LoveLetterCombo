@@ -1,6 +1,7 @@
 
 jwt:
   header: Authorization
+  socket: jwt
   secret: loveletterSecret
   expiration: 604800
   route:

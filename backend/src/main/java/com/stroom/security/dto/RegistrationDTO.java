@@ -1,4 +1,4 @@
-package com.stroom.rest.dto;
+package com.stroom.security.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -24,4 +24,5 @@ export class TestComponent implements OnInit {
       this.router.navigateByUrl('home');
     });
   }
+  
 }

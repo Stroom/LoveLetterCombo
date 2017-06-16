@@ -8,38 +8,37 @@ import { TestService } from "app/test/test.service";
 
 @Injectable()
 export class TestResolve implements Resolve<Promise<string> | boolean> {
-    constructor(private router: Router, private http: Http, private testService: TestService) { }
+  constructor(private router: Router, private http: Http, private testService: TestService) { }
     
-    text:string;
+  text:string;
 
-    resolve(route: ActivatedRouteSnapshot): Promise<string> | boolean {
-        return this.getTest().then(
-            res => {
-                if (res) {
-                    console.log(res);
-                    this.text = res;
-                    return this.text;
-                }
-                else {
-                    this.router.navigateByUrl('');
-                    return null;
-                }
-                
+  resolve(route: ActivatedRouteSnapshot): Promise<string> | boolean {
+    return this.getTest()
+        .then(
+          res => {
+            if (res) {
+                this.text = res;
+                return this.text;
             }
+            else {
+                this.router.navigateByUrl('');
+                return null;
+            }
+          }
         )
         .catch(err => {
-            this.router.navigateByUrl('');
-            return null;
+          this.router.navigateByUrl('');
+          return null;
         });
     }
 
-    getTest(): Promise<string> {
-        return this.testService.getTest();
-    }
+  getTest(): Promise<string> {
+    return this.testService.getTest();
+  }
 
-    private handleError(error: any): Promise<any> {
-        console.error('Error occurred', error);
-        return Promise.reject(error.message || error);
-    }
+  private handleError(error: any): Promise<any> {
+    console.error('Error occurred', error);
+    return Promise.reject(error.message || error);
+  }
 
 }

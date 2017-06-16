@@ -1,4 +1,4 @@
-package com.stroom.service;
+package com.stroom.service.exception;
 
 /**
  * Created by Stroom on 12/06/2017.
