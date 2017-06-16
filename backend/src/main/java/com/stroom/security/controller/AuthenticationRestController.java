@@ -114,7 +114,6 @@ public class AuthenticationRestController {
 		}
 	}
 	
-	//TODO reimplement with angular
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody RegistrationDTO dto) {
 		HttpHeaders headers = new HttpHeaders();
