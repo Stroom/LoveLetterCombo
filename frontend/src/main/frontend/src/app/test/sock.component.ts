@@ -41,8 +41,11 @@ export class SockComponent {
     
     this.stompClient.connect({}, function (frame) {
       that.isConnected = true;
-      that.stompClient.subscribe('/topic/greetings', function(greeting) {
-        that.messages.push(JSON.parse(greeting.body));
+      that.stompClient.subscribe('/topic/greetings', function(message) {
+        that.messages.push(JSON.parse(message.body));
+      });
+      that.stompClient.subscribe("/user/queue/reply", function(message) {
+        that.messages.push(JSON.parse(message.body));
       });
     }, function (err) {
       console.log('err', err);
