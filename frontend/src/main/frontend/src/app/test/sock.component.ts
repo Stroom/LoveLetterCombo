@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { TestMessage } from "app/definitions";
 import { AuthenticationService } from "app/authentication/authentication.service";
+import { environment } from "environments/environment";
 
 
 var SockJS = require('sockjs-client');
@@ -28,11 +29,13 @@ export class SockComponent {
     let message:TestMessage = {text : this.text};
     this.stompClient.send('/app/hello', {}, JSON.stringify(message));
   }
-
+  //TODO place socket(s) in a separate service?
+  //TODO Keep track of subscriptions so you could resubscribe after refresh or relogin?
+  //TODO Maybe ask that info from the server instead...
   connect() {
     var that = this;
     this.messages = new Array<TestMessage>();
-    var socket = new SockJS('http://localhost:8080/ws?jwt=' + this.authentication.getToken());
+    var socket = new SockJS(environment.BASE_URL + '/ws?jwt=' + this.authentication.getToken());
     this.stompClient = Stomp.over(socket);
     this.stompClient.debug = null;
     

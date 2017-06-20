@@ -1,6 +1,5 @@
 package com.stroom.configuration;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,7 @@ public class WebToAngularConfig {
 		return new ErrorViewResolver() {
 			@Override
 			public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map<String, Object> model) {
-				return status == HttpStatus.NOT_FOUND
+				return status == HttpStatus.NOT_FOUND || status == HttpStatus.UNAUTHORIZED
 						? new ModelAndView("index.html", Collections.<String, Object>emptyMap(), HttpStatus.OK)
 						: null;
 			}
