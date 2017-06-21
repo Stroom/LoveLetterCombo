@@ -13,10 +13,11 @@ import org.springframework.web.socket.messaging.SessionUnsubscribeEvent;
  */
 @Service
 public class SocketSubscriptionsService {
+	//https://stackoverflow.com/questions/37340271/how-to-send-message-to-user-when-he-connects-to-spring-websocket
 	
 	//Seems like existing subscription stuff is not what I need, have to implement it myself.
 	
-	//Needs to use a Map<String, List<SiteUser>> - (channel name - lobby, game_ID), (subscribed users)
+	//Needs to use a Map<String, Subscription> - (channel name - lobby, game_ID), (subscription object - List<User>, methods for sending info)
 	//Might have to use another map to map subscription ID to its name.
 	
 	@Autowired

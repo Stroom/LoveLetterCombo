@@ -8,10 +8,12 @@
                     <label for="connect">WebSocket connection:</label>
                     <button id="connect" class="btn btn-default" [hidden]="isConnected === true" (click)="connect()">Connect</button>
                     <button id="disconnect" class="btn btn-default" [hidden]="isConnected === false" (click)="disconnect()">Disconnect</button>
+                    <button id="subscribe" class="btn btn-default" [hidden]="showSubButton === false" (click)="subscribe()">Subscribe</button>
+                    <button id="unsubscribe" class="btn btn-default" [hidden]="showUnsubButton === false" (click)="unsubscribe()">Unsubscribe</button>
                 </div>
             </form>
         </div>
-        <div class="col-md-6" [hidden]="isConnected === false">
+        <div class="col-md-6" [hidden]="isConnected == false">
             <div class="form-group">
                 <label for="name">Write some text here</label>
                 <input type="text" id="text" class="form-control" placeholder="Text" [(ngModel)]="text">
@@ -19,7 +21,7 @@
             <button class="btn btn-default" (click)="send()">Send</button>
         </div>
     </div>
-    <div class="row" [hidden]="isConnected === false">
+    <div class="row" [hidden]="isConnected == false">
         <div class="col-md-12">
             <table class="table table-striped">
                 <thead>
