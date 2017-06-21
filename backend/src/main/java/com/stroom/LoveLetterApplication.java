@@ -12,13 +12,17 @@ public class LoveLetterApplication {
 	cd backend
 	mvn spring-boot:run
 	
+	URL: https://localhost:8443/
+	
 	ng dev at frontend/src/main/frontend: npm start
 	 */
 	
 	//Spring   JWT https://github.com/szerhusenBC/jwt-spring-security-demo
 	//Angular2 JWT http://chariotsolutions.com/blog/post/angular-2-spring-boot-jwt-cors_part2/
 	//TODO add SecurityWebSocket JWT too.
+	//TODO maybe make JWT like this: http://svlada.com/jwt-token-authentication-with-spring-boot/ (do it in a separate project first maybe)
 	public static void main(String[] args) {
 		SpringApplication.run(LoveLetterApplication.class, args);
 	}
+	
 }

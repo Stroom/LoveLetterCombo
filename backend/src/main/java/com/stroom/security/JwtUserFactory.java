@@ -1,7 +1,7 @@
 package com.stroom.security;
 
-import com.stroom.domain.model.Authority;
-import com.stroom.domain.model.SiteUser;
+import com.stroom.website.domain.model.Authority;
+import com.stroom.website.domain.model.SiteUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

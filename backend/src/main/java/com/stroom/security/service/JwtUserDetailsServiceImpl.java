@@ -1,7 +1,7 @@
 package com.stroom.security.service;
 
-import com.stroom.domain.model.SiteUser;
-import com.stroom.domain.repository.SiteUserRepository;
+import com.stroom.website.domain.model.SiteUser;
+import com.stroom.website.domain.repository.SiteUserRepository;
 import com.stroom.security.JwtUserFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
